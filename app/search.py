@@ -27,9 +27,3 @@ def search(dictionary, characters, main_char, word_list=None,index=0, words=None
         word_list.pop()
 
     return words # Returning as set to avoid duplicates
-    
-
-# test
-dictionary = set(open("words.txt", 'r').read().lower().splitlines())
-result = search(dictionary, ['o','n','i','l','x','f', 'e'], 'e')
-print(result)

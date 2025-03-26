@@ -1,22 +1,20 @@
 import unittest
-from app.search import Search
+from app.search import search
 
 class TestSearch(unittest.TestCase):
     def testSearch(self):
-        words = [
-            "Again",
-            "Having",
-            "Going",
-            "Tried",
-            "Specialized", # US spelling
-            "Specialised", # UK spelling
-            "Antidisestablishmentarianism"
+        dictionary = set(open("words.txt", 'r').read().lower().splitlines())
+        charsets = [
+            ['o','n','i','l','x','f', 'e'],
+            ['i','w','c','d','l','n', 'e'],
+            ['i','s','n','t','g','r', 'e'],
+            ['n','o','x','p','i','r', 'e']
         ]
 
-        for word in words:
-            search = Search(word, "words.txt")
-            result = search.search()
-            self.assertTrue(result, 1)
+        # Test different characters do not return 0
+        for chars in charsets:
+            result = search(dictionary, chars, 'e')
+            self.assertNotEqual(result, 0)
 
 
 if __name__ == "__main__":
