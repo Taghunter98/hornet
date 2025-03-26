@@ -3,7 +3,16 @@ from app.search import Search
 
 class TestSearch(unittest.TestCase):
     def testSearch(self):
-        words = ["AGAIN", "AGaIn", "agAiN", "antidisestablishmentarianism"]
+        words = [
+            "Again",
+            "Having",
+            "Going",
+            "Tried",
+            "Specialized", # US spelling
+            "Specialised", # UK spelling
+            "Antidisestablishmentarianism"
+        ]
+
         for word in words:
             search = Search(word, "words.txt")
             result = search.search()
